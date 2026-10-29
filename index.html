@@ -76,59 +76,53 @@
     .hero-copy .lede { font-size: clamp(17px, 1.5vw, 20px); max-width: 540px; margin: 28px 0 34px; color: #c9c7d2; }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .hero-shot { grid-area: shot; align-self: center; justify-self: center; perspective: 1600px; }
-    .hero-shot .phone { transform: rotateY(calc(-14deg * (1 - var(--p, 0)))) rotateX(calc(6deg * (1 - var(--p, 0)))) scale(calc(.94 + .06 * var(--p, 0))); transform-origin: 60% 50%; }
+    .hero-shot .phone { width: min(330px, 74vw); transform: rotateY(calc(-14deg * (1 - var(--p, 0)))) rotateX(calc(6deg * (1 - var(--p, 0)))) scale(calc(.94 + .06 * var(--p, 0))); transform-origin: 60% 50%; }
     .stats { grid-area: stats; display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; border-top: 1px solid var(--line); }
     .stats div { padding: 22px 22px 6px 0; }
     .stats div + div { padding-left: 22px; border-left: 1px solid var(--line); }
     .stats dt { font-family: var(--serif); font-size: clamp(34px, 3.6vw, 54px); line-height: 1; }
     .stats dd { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
 
-    /* Marco de teléfono */
-    .phone { width: min(320px, 74vw); padding: 10px; border-radius: 44px; background: linear-gradient(160deg, #23232e, #0f0f16);
-      border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 40px 90px rgba(0, 0, 0, .55), inset 0 0 0 1px rgba(255, 255, 255, .04); }
-    /* height:auto: sin esto el alto fijo del atributo estira la imagen al encogerse el ancho. */
-    .phone img { display: block; width: 100%; height: auto; border-radius: 34px; }
+    /* Marco de teléfono y capturas */
+    .phone { width: 100%; padding: 8px; border-radius: 38px; background: linear-gradient(160deg, #23232e, #0f0f16);
+      border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 34px 80px rgba(0, 0, 0, .55), inset 0 0 0 1px rgba(255, 255, 255, .04); }
+    /* height:auto: sin esto el alto declarado estira la imagen al encogerse el ancho. */
+    .phone img { display: block; width: 100%; height: auto; border-radius: 30px; }
+    .shots { display: grid; gap: clamp(14px, 2vw, 26px); align-items: start; justify-content: center; }
+    .shots.two { grid-template-columns: repeat(2, minmax(0, 270px)); }
+    .shots.three { grid-template-columns: repeat(3, minmax(0, 250px)); }
+    .shot { margin: 0; }
+    .shot figcaption { margin-top: 12px; text-align: center; font-size: 13px; color: var(--muted); }
+    .shot figcaption b { display: block; color: var(--ink); font-weight: 600; font-size: 14px; }
+    .shot.lift { margin-top: 48px; }
+    .notif { width: min(460px, 92%); margin: 0 auto 26px; border-radius: 22px; box-shadow: 0 30px 70px rgba(0, 0, 0, .5); display: block; height: auto; }
 
     /* Capítulos */
-    .chapter { position: relative; display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 88px); align-items: center;
-      padding: clamp(96px, 14vh, 180px) var(--gutter); border-top: 1px solid var(--line); }
-    .chapter.flip { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+    .chapter { position: relative; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 5vw, 88px); align-items: center;
+      padding: clamp(96px, 14vh, 170px) var(--gutter); border-top: 1px solid var(--line); }
+    .chapter.flip { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
     .chapter.flip .copy { order: 2; }
-    .chapter .art { justify-self: center; }
+    .chapter .art { width: 100%; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
     .chips li { font-size: 13px; color: #d8d6df; padding: 7px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255, 255, 255, .03); }
-    .modes { display: grid; gap: 10px; margin: 0 0 8px; }
+    .modes { display: grid; gap: 0; margin: 0 0 8px; }
     .mode { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
     .mode b { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1; }
     .mode span { color: var(--muted); font-size: 15px; }
-    .big-num { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border-top: 1px solid var(--line); margin-top: 8px; }
+    .big-num { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); margin-top: 8px; }
     .big-num div { padding: 20px 20px 4px 0; }
     .big-num div:nth-child(even) { padding-left: 20px; border-left: 1px solid var(--line); }
     .big-num div:nth-child(n+3) { border-top: 1px solid var(--line); }
     .big-num dt { font-family: var(--serif); font-size: clamp(36px, 4vw, 58px); line-height: 1; }
     .big-num dd { margin: 8px 0 0; font-size: 13px; color: var(--muted); }
-
-    /* Aviso de llamada bloqueada (maqueta) */
-    .notif { width: min(380px, 84vw); border-radius: 26px; padding: 18px 20px; background: rgba(28, 28, 40, .9); border: 1px solid var(--line);
-      box-shadow: 0 30px 70px rgba(0, 0, 0, .5); display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: center; }
-    .notif .ic { width: 44px; height: 44px; border-radius: 50%; background: #4F46E5; display: grid; place-items: center; }
-    .notif .ic img { width: 30px; height: 30px; border-radius: 8px; }
-    .notif small { color: var(--faint); font-size: 12px; }
-    .notif b { display: block; font-size: 15px; }
-    .notif span { color: var(--muted); font-size: 14px; }
-    .stack { display: grid; gap: 18px; justify-items: center; }
-
-    /* Pasos */
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); text-align: left; margin-top: 10px; }
+    .chapter.wide { grid-template-columns: 1fr; }
+    .chapter.wide .copy { max-width: 980px; margin: 0 auto; text-align: center; }
+    .chapter.wide p.body { margin-left: auto; margin-right: auto; }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); text-align: left; margin: 10px 0 48px; padding: 0; }
     .steps li { list-style: none; padding: 26px 26px 10px 0; }
     .steps li + li { padding-left: 26px; border-left: 1px solid var(--line); }
     .steps b { display: block; font-family: var(--serif); font-weight: 400; font-size: 26px; line-height: 1.1; margin-bottom: 8px; }
     .steps p { margin: 0; color: var(--muted); font-size: 15px; }
-    .steps q { display: block; margin-top: 10px; color: var(--ink); font-size: 14px; quotes: "«" "»"; }
-    [data-lang="en"] .steps q { quotes: "“" "”"; }
-    .chapter.wide { grid-template-columns: 1fr; }
-    .chapter.wide .copy { max-width: 980px; margin: 0 auto; text-align: center; }
-    .chapter.wide p.body { margin-left: auto; margin-right: auto; }
 
     /* Descarga */
     .download { position: relative; overflow: hidden; isolation: isolate; text-align: center; padding: clamp(120px, 18vh, 220px) var(--gutter); border-top: 1px solid var(--line); }
@@ -154,7 +148,7 @@
     .js .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; transition: none; } .btn:hover { transform: none; } }
 
-    @media (max-width: 900px) {
+    @media (max-width: 960px) {
       .links { display: none; }
       .hero { grid-template: "copy" auto "shot" auto "stats" auto / 1fr; padding-top: 100px; }
       .hero-shot { margin: 10px 0 40px; }
@@ -166,6 +160,12 @@
       .steps { grid-template-columns: 1fr; }
       .steps li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
       .mode { grid-template-columns: 1fr; gap: 4px; }
+      .shot.lift { margin-top: 0; }
+    }
+    @media (max-width: 640px) {
+      .shots.three { grid-template-columns: repeat(3, 72vw); justify-content: start; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin: 0 calc(var(--gutter) * -1); padding-left: var(--gutter); padding-right: var(--gutter); }
+      .shots.three .shot { scroll-snap-align: center; }
+      .shots.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 420px) { .brand span { display: none; } }
   </style>
@@ -176,8 +176,9 @@
   <nav class="links" aria-label="Secciones">
     <a href="#filtrar"><span lang="es">Filtrar</span><span lang="en">Screen</span></a>
     <a href="#horario"><span lang="es">Horario</span><span lang="en">Schedule</span></a>
+    <a href="#permitidos"><span lang="es">Permitidos</span><span lang="en">Allowed</span></a>
     <a href="#avisos"><span lang="es">Avisos</span><span lang="en">Alerts</span></a>
-    <a href="#ligero"><span lang="es">Ligero</span><span lang="en">Light</span></a>
+    <a href="#instalar"><span lang="es">Instalar</span><span lang="en">Install</span></a>
   </nav>
   <div class="lang" role="group" aria-label="Idioma / Language">
     <button type="button" data-set-lang="es" aria-pressed="true">ES</button>
@@ -187,6 +188,7 @@
 </header>
 
 <main>
+  <!-- 00 · Portada -->
   <section class="hero" id="top">
     <div class="glow glow-a"></div>
     <div class="glow glow-b"></div>
@@ -207,8 +209,8 @@
     </div>
     <div class="hero-shot">
       <div class="phone">
-        <img lang="es" src="img/es-3.png" alt="Pantalla de inicio de BlockCall con la protección activa" width="1080" height="2256">
-        <img lang="en" src="img/en-3.png" alt="BlockCall home screen with protection on" width="1080" height="2256">
+        <img lang="es" src="img/es-home.png" alt="Inicio de BlockCall con la protección activa" width="1080" height="2256">
+        <img lang="en" src="img/en-home.png" alt="BlockCall home screen with protection on" width="1080" height="2256">
       </div>
     </div>
     <dl class="stats">
@@ -219,79 +221,147 @@
     </dl>
   </section>
 
+  <!-- 01 · Quién puede llamar -->
   <section class="chapter" id="filtrar">
     <div class="copy reveal">
       <p class="eyebrow"><span>01</span> · <span lang="es">Filtrar</span><span lang="en">Screen</span></p>
       <h2><span lang="es">Tú eliges<br><em>quién llama</em>.</span><span lang="en">You choose<br><em>who calls</em>.</span></h2>
       <p class="body"><span lang="es">Android le pregunta a BlockCall antes de hacer sonar el teléfono. Si quien llama no cumple tus reglas, la llamada se rechaza sin que te enteres.</span><span lang="en">Android asks BlockCall before your phone rings. If the caller doesn't match your rules, the call is rejected without you noticing.</span></p>
       <div class="modes">
-        <div class="mode"><b><span lang="es">Contactos</span><span lang="en">Contacts</span></b><span><span lang="es">Entran tus contactos y los números que agregues a Permitidos.</span><span lang="en">Your contacts and the numbers you add to Allowed get through.</span></span></div>
+        <div class="mode"><b><span lang="es">Contactos</span><span lang="en">Contacts</span></b><span><span lang="es">Entran tus contactos y los números de tu lista de Permitidos.</span><span lang="en">Your contacts and the numbers on your Allowed list get through.</span></span></div>
         <div class="mode"><b><span lang="es">Mi lista</span><span lang="en">My list</span></b><span><span lang="es">Solo los números que tú elijas, aunque tengas cientos de contactos.</span><span lang="en">Only the numbers you choose, even if you have hundreds of contacts.</span></span></div>
         <div class="mode"><b><span lang="es">Nadie</span><span lang="en">Nobody</span></b><span><span lang="es">Silencio total: no entra ninguna llamada.</span><span lang="en">Total silence: no call gets through.</span></span></div>
       </div>
     </div>
     <div class="art reveal">
-      <div class="phone">
-        <img lang="es" src="img/es-4.png" alt="Selector de quién puede llamar y reglas" loading="lazy" width="1080" height="2256">
-        <img lang="en" src="img/en-4.png" alt="Who can call you selector and rules" loading="lazy" width="1080" height="2256">
+      <div class="shots three">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-home.png" alt="Modo Contactos" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-home.png" alt="Contacts mode" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Contactos</span><span lang="en">Contacts</span></b></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-mylist.png" alt="Modo Mi lista" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-mylist.png" alt="My list mode" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Mi lista</span><span lang="en">My list</span></b></figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-nobody.png" alt="Modo Nadie" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-nobody.png" alt="Nobody mode" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Nadie</span><span lang="en">Nobody</span></b></figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
+  <!-- 02 · Horario -->
   <section class="chapter flip" id="horario">
     <div class="copy reveal">
       <p class="eyebrow"><span>02</span> · <span lang="es">Horario</span><span lang="en">Schedule</span></p>
       <h2><span lang="es">Duerme<br><em>tranquilo</em>.</span><span lang="en">Sleep<br><em>soundly</em>.</span></h2>
-      <p class="body"><span lang="es">Déjala activa siempre o solo en las horas que quieras, por ejemplo de 20:00 a 06:00. El horario puede cruzar la medianoche.</span><span lang="en">Keep it on all the time or only during the hours you choose, for example 20:00 to 06:00. The schedule can cross midnight.</span></p>
+      <p class="body"><span lang="es">Déjala activa siempre o solo en las horas que quieras, por ejemplo de 20:00 a 06:00. Toca la hora y elígela en el reloj; el horario puede cruzar la medianoche.</span><span lang="en">Keep it on all the time or only during the hours you choose, for example 20:00 to 06:00. Tap a time and pick it on the clock; the schedule can cross midnight.</span></p>
       <ul class="chips">
         <li><span lang="es">Siempre o por horario</span><span lang="en">Always or scheduled</span></li>
-        <li><span lang="es">Números ocultos bloqueados</span><span lang="en">Hidden numbers blocked</span></li>
-        <li><span lang="es">Permitir si insiste</span><span lang="en">Allow if they insist</span></li>
+        <li><span lang="es">Cruza la medianoche</span><span lang="en">Crosses midnight</span></li>
+        <li><span lang="es">Reloj de 24 horas</span><span lang="en">24-hour clock</span></li>
       </ul>
-      <p class="body" style="margin-top:22px"><span lang="es"><b>Permitir si insiste</b>: si el mismo número llama 2 veces en menos de 3 minutos, la segunda llamada entra. Así no te pierdes una emergencia.</span><span lang="en"><b>Allow if they insist</b>: if the same number calls twice within 3 minutes, the second call rings. You won't miss an emergency.</span></p>
     </div>
     <div class="art reveal">
-      <div class="phone">
-        <img lang="es" src="img/es-2.png" alt="Asistente de permisos" loading="lazy" width="1080" height="2256">
-        <img lang="en" src="img/en-2.png" alt="Permission assistant" loading="lazy" width="1080" height="2256">
+      <div class="shots two">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-schedule.png" alt="Bloqueo por horario de 20:00 a 06:00" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-schedule.png" alt="Scheduled blocking from 20:00 to 06:00" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Por horario</span><span lang="en">Scheduled</span></b><span lang="es">Desde y hasta</span><span lang="en">From and until</span></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-timepicker.png" alt="Selector de hora" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-timepicker.png" alt="Time picker" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Elige la hora</span><span lang="en">Pick the time</span></b><span lang="es">En el reloj de 24 horas</span><span lang="en">On a 24-hour clock</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <section class="chapter" id="avisos">
+  <!-- 03 · Permitidos -->
+  <section class="chapter" id="permitidos">
     <div class="copy reveal">
-      <p class="eyebrow"><span>03</span> · <span lang="es">Avisos</span><span lang="en">Alerts</span></p>
-      <h2><span lang="es">Sin ruido,<br><em>sin perder nada</em>.</span><span lang="en">No noise,<br><em>nothing missed</em>.</span></h2>
-      <p class="body"><span lang="es">Un único aviso silencioso, sin sonido ni vibración, lleva la cuenta de las llamadas bloqueadas. Tócalo y verás quién llamó; si era alguien de confianza, permítelo con un toque.</span><span lang="en">A single silent notification, with no sound or vibration, counts the blocked calls. Tap it to see who called; if it was someone you trust, allow them with one tap.</span></p>
+      <p class="eyebrow"><span>03</span> · <span lang="es">Permitidos</span><span lang="en">Allowed</span></p>
+      <h2><span lang="es">Tu lista<br><em>de confianza</em>.</span><span lang="en">Your list<br><em>of trust</em>.</span></h2>
+      <p class="body"><span lang="es">Agrega los números que siempre deben entrar aunque no estén en tu agenda: el colegio, la oficina, el médico. Escríbelos a mano, elígelos de tus contactos o permítelos con un toque desde el historial.</span><span lang="en">Add the numbers that should always get through even if they aren't in your address book: school, the office, your doctor. Type them in, pick them from your contacts, or allow them with one tap from the history.</span></p>
       <ul class="chips">
-        <li><span lang="es">Historial de bloqueadas</span><span lang="en">Blocked-call history</span></li>
-        <li><span lang="es">Permitir con un toque</span><span lang="en">Allow with one tap</span></li>
+        <li><span lang="es">Agregar a mano</span><span lang="en">Add manually</span></li>
+        <li><span lang="es">Desde contactos</span><span lang="en">From contacts</span></li>
+        <li><span lang="es">Con o sin nombre</span><span lang="en">With or without a name</span></li>
+      </ul>
+    </div>
+    <div class="art reveal">
+      <div class="shots two">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-allowed.png" alt="Lista de números permitidos" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-allowed.png" alt="Allowed numbers list" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Lista de Permitidos</span><span lang="en">Allowed list</span></b></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-dialog.png" alt="Agregar un número" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-dialog.png" alt="Add a number" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Agregar número</span><span lang="en">Add number</span></b></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · Avisos -->
+  <section class="chapter flip" id="avisos">
+    <div class="copy reveal">
+      <p class="eyebrow"><span>04</span> · <span lang="es">Avisos</span><span lang="en">Alerts</span></p>
+      <h2><span lang="es">Sin ruido,<br><em>sin perder nada</em>.</span><span lang="en">No noise,<br><em>nothing missed</em>.</span></h2>
+      <p class="body"><span lang="es">Un único aviso silencioso, sin sonido ni vibración, lleva la cuenta de las llamadas bloqueadas. Tócalo y verás quién llamó; si era alguien de confianza, toca «Permitir».</span><span lang="en">A single silent notification, with no sound or vibration, counts the blocked calls. Tap it to see who called; if it was someone you trust, tap "Allow".</span></p>
+      <p class="body"><span lang="es"><b>Permitir si insiste:</b> si el mismo número llama 2 veces en menos de 3 minutos, la segunda llamada entra. Así no te pierdes una emergencia.</span><span lang="en"><b>Allow if they insist:</b> if the same number calls twice within 3 minutes, the second call rings. You won't miss an emergency.</span></p>
+      <ul class="chips">
+        <li><span lang="es">Números ocultos bloqueados</span><span lang="en">Hidden numbers blocked</span></li>
+        <li><span lang="es">Contador de nuevas</span><span lang="en">New-call counter</span></li>
         <li><span lang="es">Aviso rojo si otra app toma el filtro</span><span lang="en">Red warning if another app takes over</span></li>
       </ul>
     </div>
-    <div class="art reveal stack">
-      <div class="notif">
-        <div class="ic"><img src="img/icon.png" alt=""></div>
-        <div>
-          <small>BlockCall · <span lang="es">ahora</span><span lang="en">now</span></small>
-          <b><span lang="es">3 llamadas bloqueadas</span><span lang="en">3 blocked calls</span></b>
-          <span><span lang="es">Última: +57 300 000 0000 · 21:40</span><span lang="en">Last: +1 555 0100 · 9:40 PM</span></span>
-        </div>
-      </div>
-      <div class="phone">
-        <img src="img/es-5.png" alt="Lista de llamadas bloqueadas / Blocked calls list" loading="lazy" width="1080" height="2256">
+    <div class="art reveal">
+      <img class="notif" lang="es" src="img/es-notif.png" alt="Aviso silencioso: 4 llamadas bloqueadas" loading="lazy" width="1020" height="206">
+      <img class="notif" lang="en" src="img/en-notif.png" alt="Silent notification: 2 blocked calls" loading="lazy" width="1020" height="206">
+      <div class="shots two">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-blocked.png" alt="Historial de llamadas bloqueadas" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-blocked.png" alt="Blocked calls history" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Historial</span><span lang="en">History</span></b><span lang="es">Permitir con un toque</span><span lang="en">Allow with one tap</span></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-rules.png" alt="Permitir si insiste y avisos" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-rules.png" alt="Allow if they insist and alerts" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Reglas</span><span lang="en">Rules</span></b><span lang="es">Insistentes y avisos</span><span lang="en">Repeat callers and alerts</span></figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
+  <!-- 05 · Apariencia -->
+  <section class="chapter" id="tema">
+    <div class="copy reveal">
+      <p class="eyebrow"><span>05</span> · <span lang="es">Apariencia</span><span lang="en">Appearance</span></p>
+      <h2><span lang="es">Claro u oscuro,<br><em>como tu Android</em>.</span><span lang="en">Light or dark,<br><em>like your Android</em>.</span></h2>
+      <p class="body"><span lang="es">Sigue el tema del sistema y los colores de tu fondo de pantalla (Material You). Si prefieres uno fijo, elígelo en Apariencia. En español o en inglés, según tu teléfono.</span><span lang="en">It follows your system theme and wallpaper colors (Material You). If you prefer a fixed one, pick it under Appearance. In English or Spanish, following your phone.</span></p>
+    </div>
+    <div class="art reveal">
+      <div class="shots two">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-schedule.png" alt="Tema oscuro" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-schedule.png" alt="Dark theme" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Oscuro</span><span lang="en">Dark</span></b></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-light.png" alt="Tema claro" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-light.png" alt="Light theme" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Claro</span><span lang="en">Light</span></b></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 · Ligero -->
   <section class="chapter flip" id="ligero">
     <div class="copy reveal">
-      <p class="eyebrow"><span>04</span> · <span lang="es">Ligero</span><span lang="en">Light</span></p>
+      <p class="eyebrow"><span>06</span> · <span lang="es">Ligero</span><span lang="en">Light</span></p>
       <h2><span lang="es">Hecha para<br><em>no notarse</em>.</span><span lang="en">Built to<br><em>go unnoticed</em>.</span></h2>
       <p class="body"><span lang="es">Usa la API oficial de Android para filtrar llamadas: el sistema la despierta solo cuando entra una llamada, decide en milisegundos y la vuelve a dormir. Ningún limpiador de tareas puede detenerla, y si algo fallara, la llamada entra: nunca pierdes a un contacto.</span><span lang="en">It uses Android's official call screening API: the system wakes it only when a call arrives, it decides in milliseconds and goes back to sleep. Task killers can't stop it, and if anything failed the call would ring: you never miss a contact.</span></p>
       <p class="body"><span lang="es">Sin permiso de internet, sin anuncios, sin rastreadores. Tus contactos y tu historial nunca salen del teléfono.</span><span lang="en">No internet permission, no ads, no trackers. Your contacts and history never leave your phone.</span></p>
     </div>
-    <div class="art reveal" style="width:100%">
+    <div class="art reveal">
       <dl class="big-num">
         <div><dt>0,01 mAh</dt><dd><span lang="es">de batería con la pantalla apagada (medido)</span><span lang="en">battery with the screen off (measured)</span></dd></div>
         <div><dt>&lt;35 ms</dt><dd><span lang="es">por llamada, en un teléfono real</span><span lang="en">per call, on a real phone</span></dd></div>
@@ -301,22 +371,34 @@
     </div>
   </section>
 
+  <!-- 07 · Instalar -->
   <section class="chapter wide" id="instalar">
     <div class="copy reveal">
-      <p class="eyebrow"><span>05</span> · <span lang="es">Instalar</span><span lang="en">Install</span></p>
+      <p class="eyebrow"><span>07</span> · <span lang="es">Instalar</span><span lang="en">Install</span></p>
       <h2><span lang="es">Lista en<br><em>un minuto</em>.</span><span lang="en">Ready in<br><em>a minute</em>.</span></h2>
       <p class="body"><span lang="es">Un asistente te explica cada aviso de Android antes de que aparezca.</span><span lang="en">An assistant explains each Android prompt before it appears.</span></p>
       <ol class="steps">
         <li><b><span lang="es">Instala el APK</span><span lang="en">Install the APK</span></b><p><span lang="es">Ábrelo en el celular y permite «instalar apps de origen desconocido» si te lo pide.</span><span lang="en">Open it on your phone and allow "install unknown apps" if asked.</span></p></li>
-        <li><b><span lang="es">Elige BlockCall</span><span lang="en">Choose BlockCall</span></b><p><span lang="es">Como app de identificación de llamadas y spam. No reemplaza tu app de Teléfono.</span><span lang="en">As your caller ID &amp; spam app. It doesn't replace your Phone app.</span></p><q><span lang="es">Marca BlockCall y toca Hacer predeterminada</span><span lang="en">Select BlockCall and tap Set as default</span></q></li>
+        <li><b><span lang="es">Elige BlockCall</span><span lang="en">Choose BlockCall</span></b><p><span lang="es">Marca BlockCall (no «Ninguna») y toca «Hacer predeterminada». No reemplaza tu app de Teléfono.</span><span lang="en">Select BlockCall (not "None") and tap "Set as default". It doesn't replace your Phone app.</span></p></li>
         <li><b><span lang="es">Permite contactos</span><span lang="en">Allow contacts</span></b><p><span lang="es">Y las notificaciones. Listo: la protección queda activa.</span><span lang="en">And notifications. Done: protection is on.</span></p></li>
       </ol>
+      <div class="shots two">
+        <figure class="shot">
+          <div class="phone"><img lang="es" src="img/es-1.png" alt="Bienvenida del asistente" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-1.png" alt="Assistant welcome" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Bienvenida</span><span lang="en">Welcome</span></b></figcaption>
+        </figure>
+        <figure class="shot lift">
+          <div class="phone"><img lang="es" src="img/es-2.png" alt="Paso del permiso de filtro de llamadas" loading="lazy" width="1080" height="2256"><img lang="en" src="img/en-2.png" alt="Call screening permission step" loading="lazy" width="1080" height="2256"></div>
+          <figcaption><b><span lang="es">Permiso explicado</span><span lang="en">Permission explained</span></b></figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
+  <!-- 08 · Descargar -->
   <section class="download" id="descargar">
     <div class="glow glow-c"></div>
-    <p class="eyebrow"><span>06</span> · <span lang="es">Descargar</span><span lang="en">Download</span></p>
+    <p class="eyebrow"><span>08</span> · <span lang="es">Descargar</span><span lang="en">Download</span></p>
     <h2><span lang="es">Tu teléfono,<br><em>en silencio</em>.</span><span lang="en">Your phone,<br><em>at peace</em>.</span></h2>
     <a class="btn btn-primary btn-xl" href="https://github.com/blockcallcm/BlockCall/releases/latest/download/BlockCall.apk">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.6 9.48l1.84-3.18a.38.38 0 0 0-.66-.38l-1.86 3.22a11.5 11.5 0 0 0-9.84 0L5.22 5.92a.38.38 0 0 0-.66.38L6.4 9.48A10.8 10.8 0 0 0 1 18h22a10.8 10.8 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/></svg>
